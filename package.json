@@ -12,6 +12,10 @@
     "dictionary"
   ],
   "author": "Dan Reeves <hey@danreev.es>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danreeves/kernewek.git"
+  },
   "license": "ISC",
   "devDependencies": {
     "async": "2.0.1",
