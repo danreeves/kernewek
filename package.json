@@ -1,6 +1,6 @@
 {
   "name": "kernowek",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A cornish-english dictionary",
   "main": "index.js",
   "scripts": {
