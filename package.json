@@ -1,18 +1,21 @@
 {
   "name": "kernowek",
   "version": "1.0.0",
-  "description": "",
+  "description": "A cornish-english dictionary",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "cornish",
+    "english",
+    "dictionary"
+  ],
+  "author": "Dan Reeves <hey@danreev.es>",
   "license": "ISC",
   "devDependencies": {
     "cheerio": "0.22.0",
     "node-fetch": "1.6.1",
-    "write-file-atomic": "1.2.0",
-    "write-json-file": "2.0.0"
+    "write-file-atomic": "1.2.0"
   }
 }
