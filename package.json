@@ -14,8 +14,12 @@
   "author": "Dan Reeves <hey@danreev.es>",
   "license": "ISC",
   "devDependencies": {
+    "async": "2.0.1",
+    "ava": "0.16.0",
     "cheerio": "0.22.0",
+    "lodash.sortby": "4.7.0",
     "node-fetch": "1.6.1",
+    "ora": "0.3.0",
     "write-file-atomic": "1.2.0"
   }
 }
