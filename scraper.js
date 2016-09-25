@@ -1,4 +1,7 @@
-'use strict';
+/* eslint
+    import/no-extraneous-dependencies: 0
+    object-shorthand: 0
+*/
 const Ora = require('ora');
 const fetch = require('node-fetch');
 const queue = require('async/queue');
@@ -10,18 +13,18 @@ const baseurl = 'http://www.cornishdictionary.org.uk';
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 let dictionary = [];
 
-function getUrl(letter, page) {
-    page = page || 0;
-    return `${baseurl}/cornish/alpha/${letter}/?items_per_page=128&page=${page}`
+function getUrl (letter, page) {
+    const p = page || 0;
+    return `${baseurl}/cornish/alpha/${letter}/?items_per_page=128&page=${p}`;
 }
 
 const spinner = new Ora('Starting...').start();
 
-const q = queue(function processURL (url, done) {
+const q = queue((url, done) => {
     spinner.text = `Fetching ${url.match(/alpha\/([a-z])/)[1]} page ${url.match(/page=([0-9]+)$/)[1]}`;
     fetch(url, { timeout: 0 })
         .then(res => res.text())
-        .then(body => {
+        .then((body) => {
             const $ = cheerio.load(body);
             const $td = $('.view-content td');
             try {
@@ -48,12 +51,12 @@ const q = queue(function processURL (url, done) {
             spinner.color = 'red';
             spinner.stopAndPersist('✖');
             console.log(url, err);
-        })
+        });
 }, 1);
 
 q.drain = function done () {
     dictionary = sortby(dictionary, ['cornish', 'english']);
-    let text = 'module.exports = ' + JSON.stringify(dictionary);
+    const text = `module.exports = ${JSON.stringify(dictionary)}`;
     writeFile('index.js', text);
     spinner.text = 'File written';
     spinner.succeed();
@@ -62,5 +65,3 @@ q.drain = function done () {
 alphabet.forEach(letter => q.push(getUrl(letter)));
 
 q.process();
-
-
